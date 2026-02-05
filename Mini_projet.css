@@ -1,10 +1,8 @@
 
-/* ===== RESET SIMPLE ===== */
 * {
     box-sizing: border-box;
 }
 
-/* ===== PAGE ===== */
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #eef2f5;
@@ -13,14 +11,12 @@ body {
     text-align: center;
 }
 
-/* ===== TITRE ===== */
 h1 {
     margin: 25px 0;
     color: #f8f9fb;
     background-color: chartreuse;
 }
 
-/* ===== FORMULAIRES ===== */
 .form {
     width: 60%;
     margin: 15px auto;
@@ -60,7 +56,6 @@ h1 {
     background-color: #1f6391;
 }
 
-/* ===== TABLEAU ===== */
 table {
     width: 85%;
     margin: 30px auto;
@@ -82,12 +77,10 @@ th {
     font-size: 13px;
 }
 
-/* ===== LIGNES ===== */
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* ===== TÂCHES EN RETARD ===== */
 .retard {
     background-color: #ffcccc !important;
 }
@@ -103,7 +96,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* ===== STATISTIQUES ===== */
 .stats {
     width: 60%;
     margin: 20px auto 40px;
@@ -118,3 +110,4 @@ a:hover {
     font-size: 16px;
     color: #2a90f7;
 }
+
