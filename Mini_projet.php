@@ -9,7 +9,6 @@
 <?php
 $fichier = "taches.json";
 
-
 if (!file_exists($fichier)) {
     file_put_contents($fichier, json_encode([]));
 }
@@ -18,8 +17,6 @@ $taches = json_decode(file_get_contents($fichier), true);
 if (!is_array($taches)) {
     $taches = [];
 }
-
-
 if (isset($_POST['ajouter'])) {
     $taches[] = [
         "id" => time(),
@@ -35,7 +32,6 @@ if (isset($_POST['ajouter'])) {
     exit();
 }
 
-/* ===== CHANGER STATUT ===== */
 if (isset($_GET['statut'])) {
     foreach ($taches as &$tache) {
         if ($tache['id'] == $_GET['statut']) {
@@ -52,7 +48,6 @@ if (isset($_GET['statut'])) {
     exit();
 }
 
-/* ===== SUPPRESSION ===== */
 if (isset($_GET['supprimer'])) {
     $nouveau = [];
     foreach ($taches as $tache) {
@@ -65,8 +60,6 @@ if (isset($_GET['supprimer'])) {
     header("Location: Mini_projet.php");
     exit();
 }
-
-
 $recherche = $_GET['recherche'] ?? "";
 $filtreStatut = $_GET['filtreStatut'] ?? "";
 $filtrePriorite = $_GET['filtrePriorite'] ?? "";
@@ -86,7 +79,6 @@ foreach ($taches as $tache) {
 $total = count($taches);
 $terminees = 0;
 $retard = 0;
-
 foreach ($taches as $tache) {
     if ($tache['statut'] == "terminée") {
         $terminees++;
@@ -95,14 +87,10 @@ foreach ($taches as $tache) {
         $retard++;
     }
 }
-
 $pourcentage = ($total > 0) ? round(($terminees / $total) * 100) : 0;
 ?>
-
 <body>
-
 <h1> GESTION DES TACHES </h1>
-
 <form method="post" class="form">
     <input type="text" name="titre" placeholder="Titre" required>
     <textarea name="description" placeholder="Description" required></textarea>
@@ -114,7 +102,6 @@ $pourcentage = ($total > 0) ? round(($terminees / $total) * 100) : 0;
     <input type="date" name="date_limite" required>
     <button type="submit" name="ajouter">Ajouter</button>
 </form>
-
 <form method="get" class="form">
     <input type="text" name="recherche" placeholder="Recherche...">
     <select name="filtreStatut">
@@ -140,7 +127,6 @@ $pourcentage = ($total > 0) ? round(($terminees / $total) * 100) : 0;
         <th>Date limite</th>
         <th>Actions</th>
     </tr>
-
 <?php foreach ($tachesAffichees as $tache): 
     $enRetard = ($tache['statut'] != "terminée" && $tache['date_limite'] < date("Y-m-d"));
 ?>
@@ -156,7 +142,6 @@ $pourcentage = ($total > 0) ? round(($terminees / $total) * 100) : 0;
     </tr>
 <?php endforeach; ?>
 </table>
-
 <div class="stats">
     <p>Total : <?php echo $total; ?></p>
     <p>Terminées : <?php echo $terminees; ?></p>
@@ -166,3 +151,4 @@ $pourcentage = ($total > 0) ? round(($terminees / $total) * 100) : 0;
 
 </body>
 </html>
+
